@@ -77,9 +77,9 @@ class YourModel(tf.keras.Model):
             # MaxPool2D(pool_size=(2, 2), name='pool6'),
 
             Flatten(name='fl'),
-
-            Dense(64, activation='relu', name='fc1'),
             Dropout(rate=0.2, name='drop1'),
+            Dense(64, activation='relu', name='fc1'),
+            Dropout(rate=0.2, name='drop2'),
             # Dense(64, activation='relu', name='fc2'),
             # Dropout(rate=0.2, name='drop2'),
             Dense(hp.category_num, activation='softmax', name='fc3')
