@@ -52,16 +52,16 @@ class YourModel(tf.keras.Model):
         # ====================================================================
 
         self.architecture = [
-            Conv2D(filters=64, kernel_size=3, activation='relu', padding='same', name='conv1_1'),
-            Conv2D(filters=64, kernel_size=3, activation='relu', padding='same', name='conv1_2'),
+            Conv2D(filters=64, kernel_size=5, activation='relu', padding='same', name='conv1_1'),
+            Conv2D(filters=64, kernel_size=5, activation='relu', padding='same', name='conv1_2'),
             MaxPool2D(pool_size=(2, 2), name='pool1'),
 
-            Conv2D(filters=128, kernel_size=3, activation='relu', padding='same', name='conv2_1'),
-            Conv2D(filters=128, kernel_size=3, activation='relu', padding='same', name='conv2_2'),
+            Conv2D(filters=128, kernel_size=5, activation='relu', padding='same', name='conv2_1'),
+            Conv2D(filters=128, kernel_size=5, activation='relu', padding='same', name='conv2_2'),
             MaxPool2D(pool_size=(2, 2), name='pool2'),
 
-            Conv2D(filters=256, kernel_size=3, activation='relu', padding='same', name='conv3_1'),
-            Conv2D(filters=256, kernel_size=3, activation='relu', padding='same', name='conv3_2'),
+            Conv2D(filters=128, kernel_size=5, activation='relu', padding='same', name='conv3_1'),
+            Conv2D(filters=128, kernel_size=5, activation='relu', padding='same', name='conv3_2'),
             MaxPool2D(pool_size=(2, 2), name='pool3'),
 
             # Conv2D(filters=512, kernel_size=3, activation='relu', padding='same', name='conv4_1'),
@@ -76,13 +76,13 @@ class YourModel(tf.keras.Model):
             # Conv2D(filters=512, kernel_size=3, activation='relu', padding='same', name='conv6_2'),
             # MaxPool2D(pool_size=(2, 2), name='pool6'),
 
-            Flatten(name='fl'),
+            Flatten(name='flatten'),
+
+            Dense(128, activation='relu', name='fc1'),
             Dropout(rate=0.2, name='drop1'),
-            Dense(64, activation='relu', name='fc1'),
-            Dropout(rate=0.2, name='drop2'),
             # Dense(64, activation='relu', name='fc2'),
             # Dropout(rate=0.2, name='drop2'),
-            Dense(hp.category_num, activation='softmax', name='fc3')
+            Dense(hp.category_num, activation='softmax', name='fc2')
         ]
 
         # ====================================================================
